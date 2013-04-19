@@ -12,46 +12,46 @@ Minim minim;
 AudioInput in;
 FFT fft;
 
-int totalPts = 256;
+int buffer = 256;
 
-float [] xpts = new float[totalPts];
-float [] ypts = new float[totalPts];
-float [] radius = new float[totalPts];
+float [] xpts = new float[buffer];
+float [] ypts = new float[buffer];
+float [] radius = new float[buffer];
 
 void setup() {
   size( 800, 800 ); 
-
+  
   minim = new Minim( this );
-  in = minim.getLineIn(Minim.STEREO, 256);
-  fft = new FFT( in.bufferSize(), in.sampleRate() ); 
 
+  // crear audio in
+  in = minim.getLineIn(minim.STEREO, buffer);
+
+  fft = new FFT( in.bufferSize(), in.sampleRate() ); 
+  
   for ( int i = 0; i < xpts.length; i++) {
     xpts[i] = random(width);
     ypts[i] = random(height);
-    radius[i] = 20;
   }
 
-  background( 255 );
   smooth();
 }
 
 void draw() {
+  
+  fft.forward( in.mix );
 
   fill( 0, 8 ); 
   noStroke(); 
   rect( 0, 0, width, height );
-  fft.forward( in.mix );
    
-
   noFill();
   stroke(255);
 
-  for ( int i = 0; i < radius.length; i++) {
-
-    radius[i] = 20*fft.getBand(i);
-
-    ellipse(xpts[i], ypts[i], radius[i],radius[i]);
+  for ( int i = 0; i < xpts.length; i++) {
+    float radius = 20*fft.getBand(i);
+    ellipse(xpts[i], ypts[i], radius,radius);
   }
+  
 }
 
 void stop() {

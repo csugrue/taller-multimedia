@@ -14,6 +14,7 @@ import ddf.minim.effects.*;
 // declarar el objecto de minim
 Minim minim;
 AudioPlayer player;
+AudioPlayer player2;
 
 void setup() {
 
@@ -39,6 +40,20 @@ void draw() {
 
 
 void keyPressed() {
+  
+  if( key == ' ' ){
+    
+    if( player.isPlaying() ){
+      player.pause();
+    }else{
+      player.play();
+    }
+    
+  }
+  
+  if( key == 'r'){
+    player.rewind();
+  }
   
 }
 
