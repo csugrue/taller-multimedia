@@ -21,7 +21,7 @@ void setup() {
 
   minim = new Minim(this);  // crear el objecto
 
-  in = minim.getLineIn( Minim.STEREO, 512 );
+  in = minim.getLineIn( minim.STEREO, 512 );
   
   smooth();
   background(0);
@@ -43,6 +43,7 @@ void draw() {
   }
   
   println(r);
+  
   // scale the value because it will be a bit small
   r *= 10;
   

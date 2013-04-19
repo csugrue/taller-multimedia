@@ -23,15 +23,14 @@ void setup() {
 
   player = minim.loadFile("groove.mp3"); // crear el player con el archivo de audio
   player.play();
+  
 }
 
 
 void draw() {
   background(255);
   
-  //float x = map(player.position(), 0, player.length(), 0, width);
-  // to make player move "faster" across screen, scale player.position()
-   float x = map(player.position() * .25, 0, player.length(), 0, width);
+ float x = map(player.position() * .001, 0, player.length()*.001, 0, width);
   
   
   stroke( 0 ); 
