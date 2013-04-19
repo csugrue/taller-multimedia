@@ -24,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-
+  // change something 
   fill( 0, 8 ); 
   noStroke(); 
   rect( 0, 0, width, height );   

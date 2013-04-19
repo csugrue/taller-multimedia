@@ -39,19 +39,7 @@ void draw() {
 
 
 void keyPressed() {
-  if ( key == ' ' ) { 
-    if ( player.isPlaying() ) {
-      player.pause();
-    }
-    else {
-      player.play();
-    }
-  }
-  if ( key == CODED ) { 
-    if ( keyCode == LEFT ) {
-      player.rewind();
-    }
-  }
+  
 }
 
 void stop()
